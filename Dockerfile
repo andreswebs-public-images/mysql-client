@@ -1,6 +1,7 @@
 FROM alpine:3.11
 
-RUN addgroup -g 65333 mysql-client && \
+RUN \
+  addgroup -g 65333 mysql-client && \
   adduser \
     -u 65333 \
     -G mysql-client \
