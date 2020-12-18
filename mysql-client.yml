@@ -42,10 +42,16 @@ metadata:
     app: mysql-client
 spec:
   serviceAccountName: mysql-client
+  securityContext:
+    runAsNonRoot: true
+    supplementalGroups: [ 10001] 
+    fsGroup: 10001  
   containers:
     - name: mysql-client
       image: andreswebs/mysql-client
       imagePullPolicy: Always
+      securityContext:
+        runAsUser: 1000      
       stdin: true
       tty: true
       command: ["/bin/sh"]

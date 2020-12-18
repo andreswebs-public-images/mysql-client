@@ -1,14 +1,18 @@
 FROM alpine:3.12
 
+RUN apk add --no-cache mysql-client
+
+ARG PUID=1000
+ARG PGID=1000
+
 RUN \
-  addgroup -g 65333 mysql-client && \
+  addgroup -g "${PGID}" mysql-client && \
   adduser \
-    -u 65333 \
+    -u "${PUID}" \
     -G mysql-client \
     -h /mysql-client \
     -D \
-    mysql-client && \ 
-  apk add --no-cache mysql-client
+    mysql-client
 
 WORKDIR /mysql-client
 
