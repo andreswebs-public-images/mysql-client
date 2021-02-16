@@ -40,6 +40,8 @@ metadata:
   namespace: mysql-client
   labels:
     app: mysql-client
+  annotations:
+    cluster-autoscaler.kubernetes.io/safe-to-evict: "true"    
 spec:
   serviceAccountName: mysql-client
   securityContext:
